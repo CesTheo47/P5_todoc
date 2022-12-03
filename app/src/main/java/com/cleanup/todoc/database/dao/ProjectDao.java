@@ -1,5 +1,6 @@
 package com.cleanup.todoc.database.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -13,5 +14,7 @@ public interface ProjectDao {
 
     @Insert
     long insertProject(Project project);
+
+    LiveData<Project> getProjects(long projectId);
 
 }
