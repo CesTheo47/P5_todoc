@@ -12,8 +12,8 @@ import com.cleanup.todoc.model.Task;
 import java.util.List;
 
 public interface TaskDao {
-    @Query("SELECT * FROM Task WHERE projectId = :projectId")
-    LiveData<List<Task>> getTasks(long projectId);
+    @Query("SELECT * FROM Task")
+    LiveData<List<Task>> getTasks();
 
     @Query("SELECT * FROM Task WHERE projectId = :projectId")
     Cursor getTaskWithCursor(long projectId);
