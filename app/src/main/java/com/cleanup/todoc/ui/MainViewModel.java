@@ -3,6 +3,7 @@ package com.cleanup.todoc.ui;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
 import com.cleanup.todoc.repositories.ProjectDataRepository;
 import com.cleanup.todoc.repositories.TaskDataRepository;
@@ -25,5 +26,9 @@ public class MainViewModel extends ViewModel {
 
     public LiveData<List<Task>> getTaskListLiveData() {
         return this.taskDataRepository.getTasks();
+    }
+
+    public List<Project> getProjects() {
+        return projectDataRepository.getProjects();
     }
 }
