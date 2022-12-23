@@ -32,7 +32,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements TasksAdapter.DeleteTaskListener {
 
     @NonNull
-    private final ArrayList<Task> tasks = new ArrayList<>();
+    private List<Task> tasks = new ArrayList<>();
 
     private final TasksAdapter adapter = new TasksAdapter(tasks, this);
 
@@ -86,8 +86,9 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
         this.mainViewModel = new ViewModelProvider(this, ViewModelFactory.getInstance(this)).get(MainViewModel.class);
         this.mainViewModel.getTaskListLiveData().observe(this, new Observer<List<Task>>() {
             @Override
-            public void onChanged(List<Task> tasks) {
-                adapter.updateTasks(tasks);
+            public void onChanged(List<Task> taskList) {
+                tasks = taskList;
+                updateTasks();
             }
         });
     }
@@ -119,8 +120,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
 
     @Override
     public void onDeleteTask(Task task) {
-        tasks.remove(task);
-        updateTasks();
+        mainViewModel.deleteTask(task);
     }
 
     private void onPositiveButtonClick(DialogInterface dialogInterface) {
@@ -141,12 +141,8 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             }
             // If both project and name of the task have been set
             else if (taskProject != null) {
-                // TODO: Replace this by id of persisted task
-                long id = (long) (Math.random() * 50000);
-
-
                 Task task = new Task(
-                        id,
+                        0,
                         taskProject.getId(),
                         taskName,
                         new Date().getTime()
@@ -179,8 +175,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     }
 
     private void addTask(@NonNull Task task) {
-        tasks.add(task);
-        updateTasks();
+        mainViewModel.createTask(task);
     }
 
     private void updateTasks() {

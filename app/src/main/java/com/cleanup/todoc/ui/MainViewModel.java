@@ -32,8 +32,14 @@ public class MainViewModel extends ViewModel {
         return projectDataRepository.getProjects();
     }
 
-    public void addTask(task abc) {
+    public void createTask(Task task) {
         executor.execute(() ->
-                taskDataRepository.createTask(abc);
+                taskDataRepository.createTask(task));
+    }
+
+    public void deleteTask(Task task) {
+        executor.execute(() -> {
+            taskDataRepository.deleteTask(task.getId());
+        });
     }
 }
