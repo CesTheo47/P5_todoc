@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 
 import com.cleanup.todoc.database.dao.TaskDao;
 import com.cleanup.todoc.model.Task;
+import com.cleanup.todoc.model.TaskAndProject;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class TaskDataRepository {
 
     // --- GET ---
 
-    public LiveData<List<Task>> getTasks(){
+    public LiveData<List<TaskAndProject>> getTasks(){
         return this.taskDao.getTasks();
     }
     // --- CREATE ---

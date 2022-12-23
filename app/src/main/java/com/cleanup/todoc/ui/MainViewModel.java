@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
+import com.cleanup.todoc.model.TaskAndProject;
 import com.cleanup.todoc.repositories.ProjectDataRepository;
 import com.cleanup.todoc.repositories.TaskDataRepository;
 
@@ -24,7 +25,7 @@ public class MainViewModel extends ViewModel {
         this.executor = executor;
     }
 
-    public LiveData<List<Task>> getTaskListLiveData() {
+    public LiveData<List<TaskAndProject>> getTaskListLiveData() {
         return this.taskDataRepository.getTasks();
     }
 

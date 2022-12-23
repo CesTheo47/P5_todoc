@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cleanup.todoc.R;
 import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
+import com.cleanup.todoc.model.TaskAndProject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,9 +33,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements TasksAdapter.DeleteTaskListener {
 
     @NonNull
-    private List<Task> tasks = new ArrayList<>();
+    private List<TaskAndProject> taskAndProjects = new ArrayList<>();
 
-    private final TasksAdapter adapter = new TasksAdapter(tasks, this);
+    private final TasksAdapter adapter = new TasksAdapter(taskAndProjects, this);
 
     @NonNull
     private SortMethod sortMethod = SortMethod.NONE;
@@ -84,10 +85,10 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
 
     private void configureViewModel() {
         this.mainViewModel = new ViewModelProvider(this, ViewModelFactory.getInstance(this)).get(MainViewModel.class);
-        this.mainViewModel.getTaskListLiveData().observe(this, new Observer<List<Task>>() {
+        this.mainViewModel.getTaskListLiveData().observe(this, new Observer<List<TaskAndProject>>() {
             @Override
-            public void onChanged(List<Task> taskList) {
-                tasks = taskList;
+            public void onChanged(List<TaskAndProject> taskAndProjectList) {
+                taskAndProjects = taskAndProjectList;
                 updateTasks();
             }
         });
@@ -179,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     }
 
     private void updateTasks() {
-        if (tasks.size() == 0) {
+        if (taskAndProjects.size() == 0) {
             lblNoTasks.setVisibility(View.VISIBLE);
             listTasks.setVisibility(View.GONE);
         } else {
@@ -187,20 +188,20 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             listTasks.setVisibility(View.VISIBLE);
             switch (sortMethod) {
                 case ALPHABETICAL:
-                    Collections.sort(tasks, new Task.TaskAZComparator());
+                    Collections.sort(taskAndProjects, new TaskAndProject.TaskAZComparator());
                     break;
                 case ALPHABETICAL_INVERTED:
-                    Collections.sort(tasks, new Task.TaskZAComparator());
+                    Collections.sort(taskAndProjects, new TaskAndProject.TaskZAComparator());
                     break;
                 case RECENT_FIRST:
-                    Collections.sort(tasks, new Task.TaskRecentComparator());
+                    Collections.sort(taskAndProjects, new TaskAndProject.TaskRecentComparator());
                     break;
                 case OLD_FIRST:
-                    Collections.sort(tasks, new Task.TaskOldComparator());
+                    Collections.sort(taskAndProjects, new TaskAndProject.TaskOldComparator());
                     break;
 
             }
-            adapter.updateTasks(tasks);
+            adapter.updateTasks(taskAndProjects);
         }
     }
 
