@@ -8,7 +8,7 @@ android {
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -38,10 +38,6 @@ dependencies {
 
     // ROOM
     implementation "androidx.room:room-runtime:2.4.3"
-    androidTestImplementation project(path: ':app')
-    androidTestImplementation project(path: ':app')
-    androidTestImplementation project(path: ':app')
-    androidTestImplementation project(path: ':app')
     androidTestImplementation project(path: ':app')
     annotationProcessor "androidx.room:room-compiler:2.4.3"
 

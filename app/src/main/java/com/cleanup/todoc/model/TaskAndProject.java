@@ -14,6 +14,14 @@ public class TaskAndProject {
     )
     public Project project;
 
+    public TaskAndProject() {
+    }
+
+    public TaskAndProject(Task task, Project project) {
+        this.task = task;
+        this.project = project;
+    }
+
     public static class TaskAZComparator implements Comparator<TaskAndProject> {
         @Override
         public int compare(TaskAndProject left, TaskAndProject right) {
