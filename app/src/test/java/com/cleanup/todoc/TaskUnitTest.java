@@ -37,21 +37,25 @@ public class TaskUnitTest {
         assertSame(taskAndProjectList.get(2), taskAndProject2);
     }
 
-   /* @Test
+    @Test
     public void test_za_comparator() {
         final Task task1 = new Task(1, 1, "aaa", 123);
         final Task task2 = new Task(2, 2, "zzz", 124);
         final Task task3 = new Task(3, 3, "hhh", 125);
 
-        final ArrayList<Task> tasks = new ArrayList<>();
-        tasks.add(task1);
-        tasks.add(task2);
-        tasks.add(task3);
-        Collections.sort(tasks, new Task.TaskZAComparator());
+        final TaskAndProject taskAndProject1 = new TaskAndProject(task1, project);
+        final TaskAndProject taskAndProject2 = new TaskAndProject(task2, project);
+        final TaskAndProject taskAndProject3 = new TaskAndProject(task3, project);
 
-        assertSame(tasks.get(0), task2);
-        assertSame(tasks.get(1), task3);
-        assertSame(tasks.get(2), task1);
+        final ArrayList<TaskAndProject> taskAndProjectList = new ArrayList<>();
+        taskAndProjectList.add(taskAndProject1);
+        taskAndProjectList.add(taskAndProject2);
+        taskAndProjectList.add(taskAndProject3);
+        Collections.sort(taskAndProjectList, new TaskAndProject.TaskZAComparator());
+
+        assertSame(taskAndProjectList.get(0), taskAndProject2);
+        assertSame(taskAndProjectList.get(1), taskAndProject3);
+        assertSame(taskAndProjectList.get(2), taskAndProject1);
     }
 
     @Test
@@ -60,15 +64,19 @@ public class TaskUnitTest {
         final Task task2 = new Task(2, 2, "zzz", 124);
         final Task task3 = new Task(3, 3, "hhh", 125);
 
-        final ArrayList<Task> tasks = new ArrayList<>();
-        tasks.add(task1);
-        tasks.add(task2);
-        tasks.add(task3);
-        Collections.sort(tasks, new Task.TaskRecentComparator());
+        final TaskAndProject taskAndProject1 = new TaskAndProject(task1, project);
+        final TaskAndProject taskAndProject2 = new TaskAndProject(task2, project);
+        final TaskAndProject taskAndProject3 = new TaskAndProject(task3, project);
 
-        assertSame(tasks.get(0), task3);
-        assertSame(tasks.get(1), task2);
-        assertSame(tasks.get(2), task1);
+        final ArrayList<TaskAndProject> taskAndProjectList = new ArrayList<>();
+        taskAndProjectList.add(taskAndProject1);
+        taskAndProjectList.add(taskAndProject2);
+        taskAndProjectList.add(taskAndProject3);
+        Collections.sort(taskAndProjectList, new TaskAndProject.TaskRecentComparator());
+
+        assertSame(taskAndProjectList.get(0), taskAndProject3);
+        assertSame(taskAndProjectList.get(1), taskAndProject2);
+        assertSame(taskAndProjectList.get(2), taskAndProject1);
     }
 
     @Test
@@ -77,14 +85,18 @@ public class TaskUnitTest {
         final Task task2 = new Task(2, 2, "zzz", 124);
         final Task task3 = new Task(3, 3, "hhh", 125);
 
-        final ArrayList<Task> tasks = new ArrayList<>();
-        tasks.add(task1);
-        tasks.add(task2);
-        tasks.add(task3);
-        Collections.sort(tasks, new Task.TaskOldComparator());
+        final TaskAndProject taskAndProject1 = new TaskAndProject(task1, project);
+        final TaskAndProject taskAndProject2 = new TaskAndProject(task2, project);
+        final TaskAndProject taskAndProject3 = new TaskAndProject(task3, project);
 
-        assertSame(tasks.get(0), task1);
-        assertSame(tasks.get(1), task2);
-        assertSame(tasks.get(2), task3);
-    }*/
+        final ArrayList<TaskAndProject> taskAndProjectList = new ArrayList<>();
+        taskAndProjectList.add(taskAndProject1);
+        taskAndProjectList.add(taskAndProject2);
+        taskAndProjectList.add(taskAndProject3);
+        Collections.sort(taskAndProjectList, new TaskAndProject.TaskOldComparator());
+
+        assertSame(taskAndProjectList.get(0), taskAndProject1);
+        assertSame(taskAndProjectList.get(1), taskAndProject2);
+        assertSame(taskAndProjectList.get(2), taskAndProject3);
+    }
 }
