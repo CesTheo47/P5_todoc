@@ -53,9 +53,9 @@ public class TaskDaoTest {
 
     @Test
     public void insertAndGetTasks() throws InterruptedException {
+        this.database.projectDao().insertProject(PROJECT_DEMO);
         this.database.taskDao().insertTask(TASK_DEMO);
         this.database.taskDao().insertTask(TASK_DEMO_2);
-        this.database.projectDao().insertProject(PROJECT_DEMO);
 
         LiveData<List<TaskAndProject>> list = (LiveData<List<TaskAndProject>>) LiveDataTestUtil.getValue(this.database.taskDao().getTasks());
         assertTrue(list.getValue().equals(TASK_DEMO.getName())) && list
