@@ -1,5 +1,6 @@
 package com.cleanup.todoc;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
@@ -64,5 +65,6 @@ public class ProjectDaoTest {
         List<Project> list = this.database.projectDao().getProjects();
         assertTrue(list.get(0).getName().equals(PROJECT_DEMO.getName()) && list.get(0).getId() == PROJECT_ID);
         assertTrue(list.get(1).getName().equals(PROJECT_DEMO_2.getName()) && list.get(1).getId() == PROJECT_ID_2);
+        assertEquals(2,list.size());
     }
 }
