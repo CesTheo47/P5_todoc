@@ -14,6 +14,5 @@ public class ProjectDataRepository {
         return projectDao.getProjects();
     }
 
-    //public LiveData<Project> getUser(long projectId) { return this.projectDao.getProjects(projectId); }
 }
 
