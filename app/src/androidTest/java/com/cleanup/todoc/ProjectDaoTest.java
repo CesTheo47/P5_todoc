@@ -28,14 +28,14 @@ public class ProjectDaoTest {
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
     // DATA SET FOR TEST
-    private static long PROJECT_ID = 1;
-    private static long PROJECT_ID_2 = 2;
-    private static Project PROJECT_DEMO = new Project(PROJECT_ID, "Test", 0xFFEADAD1);
-    private static Project PROJECT_DEMO_2 = new Project(PROJECT_ID_2, "Test_2", 0xFFEADAD1);
+    private static final long PROJECT_ID = 1;
+    private static final long PROJECT_ID_2 = 2;
+    private static final Project PROJECT_DEMO = new Project(PROJECT_ID, "Test", 0xFFEADAD1);
+    private static final Project PROJECT_DEMO_2 = new Project(PROJECT_ID_2, "Test_2", 0xFFEADAD1);
 
 
     @Before
-    public void initDb() throws Exception {
+    public void initDb() {
         this.database = Room.inMemoryDatabaseBuilder(ApplicationProvider.getApplicationContext(),
                         TodocDatabase.class)
                 .allowMainThreadQueries()
@@ -43,12 +43,12 @@ public class ProjectDaoTest {
     }
 
     @After
-    public void closeDb() throws Exception {
+    public void closeDb() {
         database.close();
     }
 
     @Test
-    public void insertAndGetProject() throws InterruptedException {
+    public void insertAndGetProject() {
         // BEFORE : Adding a new project
         this.database.projectDao().insertProject(PROJECT_DEMO);
         // TEST
@@ -57,7 +57,7 @@ public class ProjectDaoTest {
     }
 
     @Test
-    public void insertAndGetProjectList() throws InterruptedException {
+    public void insertAndGetProjectList() {
         // BEFORE : Adding a new project
         this.database.projectDao().insertProject(PROJECT_DEMO);
         this.database.projectDao().insertProject(PROJECT_DEMO_2);

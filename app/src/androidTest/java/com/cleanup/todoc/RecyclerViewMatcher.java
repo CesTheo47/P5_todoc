@@ -23,7 +23,7 @@ public class RecyclerViewMatcher {
 
     public Matcher<View> atPositionOnView(final int position, final int targetViewId) {
 
-        return new TypeSafeMatcher<View>() {
+        return new TypeSafeMatcher<>() {
             Resources resources = null;
             View childView;
 
@@ -34,8 +34,7 @@ public class RecyclerViewMatcher {
                         idDescription = this.resources.getResourceName(recyclerViewId);
                     } catch (Resources.NotFoundException var4) {
                         idDescription = String.format("%s (resource name not found)",
-                                Integer.valueOf
-                                        (recyclerViewId));
+                                recyclerViewId);
                     }
                 }
 
