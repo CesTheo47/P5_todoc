@@ -39,8 +39,6 @@ public class MainViewModel extends ViewModel {
     }
 
     public void deleteTask(Task task) {
-        executor.execute(() -> {
-            taskDataRepository.deleteTask(task.getId());
-        });
+        executor.execute(() -> taskDataRepository.deleteTask(task.getId()));
     }
 }

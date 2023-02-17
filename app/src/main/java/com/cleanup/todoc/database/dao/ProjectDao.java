@@ -14,7 +14,7 @@ public interface ProjectDao {
     List<Project> getProjects();
 
     @Insert
-    long insertProject(Project project);
+    void insertProject(Project project);
 
     @Query("SELECT * FROM Project WHERE id = :projectId")
     Project getProject(long projectId);

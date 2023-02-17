@@ -12,7 +12,7 @@ public class LiveDataTestUtil {
         final Object[] data = new Object[1];
         final CountDownLatch latch = new CountDownLatch(1);
 
-        Observer<T> observer = new Observer<T>() {
+        Observer<T> observer = new Observer<>() {
             @Override
             public void onChanged(@Nullable T o) {
                 data[0] = o;
