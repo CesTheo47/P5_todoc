@@ -25,14 +25,14 @@ public class TaskAndProject {
     public static class TaskAZComparator implements Comparator<TaskAndProject> {
         @Override
         public int compare(TaskAndProject left, TaskAndProject right) {
-            return left.task.getName().compareTo(right.task.getName());
+            return left.task.getName().toLowerCase().compareTo(right.task.getName().toLowerCase());
         }
     }
 
     public static class TaskZAComparator implements Comparator<TaskAndProject> {
         @Override
         public int compare(TaskAndProject left, TaskAndProject right) {
-            return right.task.getName().compareTo(left.task.getName());
+            return right.task.getName().toLowerCase().compareTo(left.task.getName().toLowerCase());
         }
     }
 
